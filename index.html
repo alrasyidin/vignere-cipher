@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+	<title>Vignere Chipper</title>
+	<link rel="stylesheet" type="text/css" href="skeleton.min.css">
+	<style>
+		.center{
+			text-align:center;
+		}
+		.alert{
+			padding: 5px;
+			color: white;
+			margin-bottom: 1em;
+		}
+		.success{
+			background: #1CCA34;
+		}
+		.error{
+			background: #FF3C3C;
+		}
+		button{
+			display: inline-block;
+		}
+		button[disabled]{
+			background-color: #C4C4C4;
+		}
+
+		button[disabled]:hover{
+			/*background-color: #9E9E9E;*/
+			border: none;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1 class="center">Vignere Chipper</h1>
+	<form>
+		<div>
+			<label for="message">Message</label>
+			<input type="text" name="message" id="message" class="u-full-width">
+		</div>
+		<div>
+			<label for="key">Key</label>
+			<input type="text" name="key" id="key" class="u-full-width">
+		</div>
+		<div class="row">
+			<div class="six columns">
+				<button class="encrypt u-full-width">Encrypt</button>
+			</div>
+			<div class="six columns">
+				<button class="decrypt u-full-width">Decrypt</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

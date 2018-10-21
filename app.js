@@ -33,21 +33,26 @@ function decrypt(input, key){
 	let output = "";
 	input = input.toString();
 	key  = key.toString();
+
 	// console.log(input)
 	for (let i = 0, j = 0; i < input.length; i++) {
 		let c = input.charCodeAt(i);
 		let k = key[j % key.length].charCodeAt();
-		let hitungChar = c - 65 - (k - 65);
+		let hitungChar = c - k;
 		if (isUppercase(c)) {
 			if (hitungChar < 0) {
-				output += String.fromCharCode(c - 65 - (k - 65) + 26 + 65);
+				output += String.fromCharCode(hitungChar + 26 + 65);
 			} else {
-				output += String.fromCharCode(Math.abs(c - 65 - (k - 65)) % 26 + 65);	
+				output += String.fromCharCode(Math.abs(hitungChar) % 26 + 65);	
 			}
 				
 			j++;
 		} else if (isLowercase(c)) {
-			output += String.fromCharCode((c - 97 - k - 97) % 26 + 97);
+			if (hitungChar < 0) {
+				output += String.fromCharCode(hitungChar + 26 + 97);
+			} else {
+				output += String.fromCharCode(hitungChar % 26 + 97);
+			}
 			j++;
 		} else {
 			output += input.charAt(i);
@@ -104,7 +109,7 @@ decryptBtn.addEventListener('click', function(e){
 		// console.log(plainText.value, key.value);
 		let decrypto = decrypt(plainText.value, key.value);
 
-		showAlert('Berhasil mendeskripsi plaintext', 'success');
+		showAlert('Berhasil mendeskripsi chipertext', 'success');
 		
 		plainText.value = decrypto;
 		encryptBtn.disabled = false;
